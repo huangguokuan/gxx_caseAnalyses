@@ -1,0 +1,52 @@
+.vertical-gradient(@startColor, @endColor) {
+    background-color: average(@startColor, @endColor);
+    background-image: -ms-linear-gradient(top, @startColor 0%, @endColor 100%);
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @endColor);
+    background-image: -o-linear-gradient(top, @startColor, @endColor);
+    background-image: linear-gradient(0deg, @endColor 0%, @startColor 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=@startColor, endcolorstr=@endColor, gradientType='0');
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=@startColor, endcolorstr=@endColor, gradientType='0');
+    background-blend-mode: normal, normal;
+}
+
+.horizontal-gradient(@startColor, @endColor) {
+    background-color: average(@startColor, @endColor);
+    background-image: -ms-linear-gradient(left, @startColor 0%, @endColor 100%);
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+    background-image: -moz-linear-gradient(left, @startColor, @endColor);
+    background-image: -o-linear-gradient(left, @startColor, @endColor);
+    background-image: linear-gradient(-90deg, @endColor 0%, @startColor 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=@startColor, endcolorstr=@endColor, gradientType='1');
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=@startColor, endcolorstr=@endColor, gradientType='1');
+    background-blend-mode: normal, normal;
+}
+
+.placeholder(@color:@input-placeholder-color) {
+    &::-moz-placeholder {
+        opacity: 1;
+        color: @color;
+    }
+
+    &:-ms-input-placeholder {
+        color: @color;
+    }
+
+    &::-webkit-input-placeholder {
+        color: @color;
+    }
+
+}
+
+.inline-block() {
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: 0;
+    word-spacing: 0;
+}
+
+.text-overflow() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

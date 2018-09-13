@@ -1,0 +1,680 @@
+@import '../../../style/mixins';
+@import '../../../style/common';
+@nodeDetailPanel: 300px;
+@deep: ~'>>>';
+
+.center-block {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.hide-icon {
+    @{deep} i.ivu-icon-android-close {
+        display: none !important;
+    }
+
+}
+
+#graphPage {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #fff url('../../../images/relationGraph/bg.gif') 0 100% no-repeat;
+    background-size: contain;
+
+    .relation-graph-title {
+        margin-top: 10%;
+        transition: all .6s ease;
+        &:extend(.center-block);
+
+        h1 {
+            font-size: 46px;
+            text-align: center;
+            color: #0e81ef;
+
+            img {
+                margin-right: 20px;
+                vertical-align: middle;
+            }
+
+        }
+
+        h4 {
+            margin-top: 30px;
+            font-size: 14px;
+            transition: all .6s ease;
+            text-align: center;
+
+            span {
+                margin: 0 10px;
+                font-size: 20px;
+                color: #5b90e7;
+            }
+
+        }
+
+    }
+
+    .cmp-search-input {
+        width: 42%;
+        height: 50px;
+        margin: 35px auto 10px;
+
+        @{deep} .ivu-btn {
+            height: 50px;
+            line-height: 46px;
+
+            .ivu-icon {
+                margin-top: 3px;
+                font-size: 24px;
+            }
+
+        }
+
+        @{deep} .ivu-input {
+            height: auto;
+            height: 50px;
+            padding: 0 7px 0 10px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        @{deep} .ivu-input-icon {
+            height: 50px;
+            line-height: 50px;
+            color: #b6c1d1;
+        }
+
+        &.top-left {
+            width: 450px;
+            height: 30px;
+            margin: 0;
+            position: absolute;
+            z-index: 9;
+            top: 20px;
+            left: 20px;
+            background-image: none;
+
+            @{deep} .ivu-input {
+                height: 30px;
+                padding-left: 35px;
+                background: #f5f9ff url('../../../images/base/search.png') 10px center no-repeat;
+            }
+
+            @{deep} .ivu-input-icon {
+                height: 30px;
+                line-height: 30px;
+                right: 60px;
+            }
+
+            @{deep} .ivu-input-group-append {
+                width: 68px;
+
+                .ivu-btn {
+                    height: 30px;
+                    font-size: 14px;
+                    line-height: 1;
+                }
+
+            }
+
+            @{deep} .placeholder {
+                top: 5px;
+                left: 40px;
+            }
+
+        }
+
+    }
+
+    .toggle-rule {
+        width: 42%;
+        font-size: 14px;
+        line-height: 1;
+        cursor: pointer;
+        text-align: right;
+        color: #a5b3c7;
+        &:extend(.center-block);
+
+        .ivu-icon {
+            margin-left: 10px;
+        }
+
+    }
+
+    .rule-wrapper {
+        width: 42%;
+        margin-top: 3px;
+        color: #a5b3c7;
+        &:extend(.center-block);
+
+        .ivu-icon {
+            margin-right: 8px;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .rule-list {
+            margin-left: 22px;
+
+            .rule-item {
+                line-height: 20px;
+            }
+
+        }
+
+    }
+
+    #graph {
+        width: 100%;
+        height: 100%;
+    }
+
+    .tool-bar {
+        position: absolute;
+        top: 35px;
+        right: 130px;
+        transition: all .2s ease;
+
+        .ivu-btn {
+            padding: 7px 15px;
+            font-size: 14px;
+        }
+
+        &.offset-right {
+            right: 515px !important;
+        }
+
+    }
+
+    .search-list-collapse {
+        width: 100px;
+        line-height: 30px;
+        position: absolute;
+        z-index: 98;
+        top: 90px;
+        left: 20px;
+
+        .ivu-icon {
+            width: 8px;
+            height: 30px;
+            font-size: 18px;
+            line-height: 30px;
+            position: absolute;
+            right: 8px;
+        }
+
+        .search-list-title {
+            height: 30px;
+            padding: 0 8px;
+            cursor: pointer;
+            color: #0394f9;
+            border: 1px solid #cee0f0;
+            border-radius: 4px;
+            .text-overflow;
+            .vertical-gradient(#ffffff, #eff6ff);
+        }
+
+        .search-list {
+            overflow: auto;
+            max-height: 300px;
+            margin-top: 5px;
+            cursor: pointer;
+            border: 1px solid #cee0f0;
+            border-radius: 4px;
+            box-shadow: 3px 3px 3px rgba(85, 176, 255, .3);
+            background: #f7faff;
+
+            li {
+                padding: 0 16px 0 8px;
+                color: #545c69;
+                .text-overflow;
+
+                &:hover {
+                    color: #fff;
+                    background: #55b1f1;
+                }
+
+                &.clear-list {
+                    padding-right: 8px;
+                    text-align: center;
+
+                    &:hover {
+                        color: #545c69;
+                        background: #fff;
+                    }
+
+                    p {
+                        border-top: 1px solid #cee0f0;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    .name-collapse {
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 382px;
+        position: absolute;
+        z-index: 99;
+        top: 50px;
+        left: 20px;
+
+        @{deep} .ivu-collapse-header {
+            padding-left: 15px;
+            font-size: 14px;
+            border-bottom: 1px solid #cee0f0;
+            background-color: #f7faff;
+
+            .num {
+                font-weight: bold;
+                color: #fe3232;
+            }
+
+        }
+
+        @{deep} .ivu-collapse-content {
+            overflow: auto;
+            max-height: 350px;
+            padding: 0 10px;
+            background-color: #f7faff;
+
+
+            .ivu-collapse-content-box {
+                padding: 0;
+            }
+
+            .ivu-card {
+                margin: 10px 0;
+                border: 1px dashed #cee0f0;
+            }
+
+            p {
+                clear: both;
+                overflow: hidden;
+                padding: 5px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                .name {
+                    float: left;
+                }
+
+                .gender {
+                    float: right;
+                }
+
+                i {
+                    font-style: normal;
+                    color: #68778c;
+
+                    &:nth-child(even) {
+                        color: #2b3646
+                    }
+
+                }
+
+            }
+
+            .ivu-page {
+                text-align: right;
+            }
+
+        }
+
+    }
+
+    .accompany-form,
+    .tool-panel {
+        width: 290px;
+        position: absolute;
+        z-index: 10;
+        top: 55px;
+        right: 10px;
+        transition: all .2s ease;
+        color: #2b3646;
+        border: 1px solid #92ccf6;
+        background: #f7faff;
+
+        &:hover {
+            box-shadow: 0 0 3px rgba(85, 176, 255, .3);
+        }
+
+        .ivu-card-body {
+            height: 307px;
+            padding: 20px;
+
+            p {
+                margin-bottom: 10px;
+
+                .ivu-select {
+                    width: 176px;
+                }
+
+                .ivu-date-picker {
+                    width: 176px;
+                    position: relative;
+
+                    @{deep} .ivu-select-dropdown {
+                        right: 0 !important;
+                        left: auto !important;
+                    }
+
+                    @{deep} .ivu-input {
+                        font-size: 12px;
+                    }
+
+                }
+
+                .ivu-switch {
+                    float: right;
+                }
+
+            }
+
+            .label {
+                margin-right: 5px;
+                line-height: 24px;
+            }
+
+            .accompany-mode {
+                display: inline-block;
+                width: 176px;
+                vertical-align: top;
+
+                .ivu-checkbox-group-item {
+                    margin-bottom: 10px;
+
+                    &:nth-child(even) {
+                        margin-left: 28px;
+                    }
+
+                }
+
+            }
+
+            .btn-wrapper {
+                margin-top: 5px;
+                text-align: center;
+            }
+
+        }
+
+        &.offset-right {
+            right: @nodeDetailPanel+10px !important;
+        }
+
+    }
+
+    .search-list-card {
+        position: absolute;
+        z-index: 10;
+        top: 80px;
+        left: 20px;
+        transition: all .2s ease;
+        color: #2b3646;
+        border: 1px solid #92ccf6;
+        background: #f7faff;
+
+        &:hover {
+            box-shadow: 0 0 3px rgba(85, 176, 255, .3);
+        }
+
+        @{deep} .ivu-card-body {
+            padding: 0;
+
+            .search-list {
+                li {
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border-bottom: 1px solid #92ccf6;
+
+                    &:last-child {
+                        border: none;
+                    }
+
+                    &:hover {
+                        background: #ebf7ff;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    .node-detail-panel {
+        overflow: visible;
+        width: @nodeDetailPanel;
+        height: 100%;
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        right: 0;
+        transition: all .2s ease;
+        border-color: #cee0f0;
+        background-color: #eff6ff;
+
+        .toggle-btn {
+            width: 10px;
+            height: 60px;
+            margin-top: -30px;
+            line-height: 60px;
+            position: absolute;
+            z-index: 9;
+            top: 50%;
+            left: -10px;
+            text-align: center;
+            color: #999;
+            border: 1px solid #cee0f0;
+            border-radius: 5px;
+            background-color: #fbfcff;
+        }
+
+        @{deep} .ivu-card-head {
+            padding: 6px;
+            text-align: center;
+            .vertical-gradient(#ffffff, #eff6ff);
+        }
+
+        @{deep} .ivu-card-body {
+            padding: 0;
+            font-size: 12px;
+
+            .node-detail-top {
+                overflow: hidden;
+                text-align: center;
+                border-bottom: 1px dashed #cee0f0;
+
+                .person-detail-top {
+                    padding: 10px;
+
+                    .avatar {
+                        float: left;
+                        width: 50px;
+                        height: 67px;
+                        vertical-align: middle;
+
+                        &.avatar-default {
+                            background: #efefef url('../../../images/base/people-default.png') center no-repeat;
+                            background-size: contain;
+                        }
+
+                    }
+
+                    .avatar-right {
+                        margin: 0 0 5px 50px;
+                        padding-left: 15px;
+                    }
+
+                    .ivu-icon {
+                        margin: -3px 10px 0 0;
+                        font-size: 18px;
+                        font-weight: bold;
+                        vertical-align: middle;
+                    }
+
+                }
+
+                .phone-detail-top {
+                    padding: 0 10px;
+
+                    p {
+                        line-height: 35px;
+                    }
+
+                }
+
+                p {
+                    line-height: 24px;
+                    text-align: left;
+                    .text-overflow;
+
+                    i {
+                        font-style: normal;
+                        color: #68778c;
+
+                        &:nth-child(even) {
+                            color: #2b3646
+                        }
+
+                    }
+
+                    span {
+                        float: left;
+                        width: 50%;
+                    }
+
+                }
+
+            }
+
+            .ivu-table-wrapper {
+                border: none;
+
+                .ivu-table {
+                    td,
+                    th {
+                        border-bottom: 0;
+                    }
+
+                    .ivu-table-body {
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                        height: 100% !important;
+                        &:extend(.custom-scroll);
+
+                        .ivu-table-cell {
+                            padding: 0;
+                        }
+
+                        table {
+                            width: 100% !important;
+                        }
+
+                    }
+
+                    &.no-table {
+                        td {
+                            padding: 0 2px;
+                        }
+
+                        .ivu-table-body {
+                            td {
+                                border: none;
+                                background-color: #eff6ff;
+
+                                &:nth-child(odd) {
+                                    color: #68778c;
+                                }
+
+                                &:nth-child(even) {
+                                    color: #2b3646;
+                                }
+
+                                .ivu-table-cell {
+                                    padding: 0 5px;
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        #map {
+            width: 100%;
+            height: 300px;
+        }
+
+    }
+
+    .contextmenu {
+        position: absolute;
+        border: 1px solid #c1d5e6;
+        border-radius: 5px;
+        background-color: #f3f6fd;
+        box-shadow: 0 0 3px #ccc;
+
+        .contextmenu-item {
+            height: 30px;
+            padding: 0 20px;
+            line-height: 30px;
+            cursor: pointer;
+            color: #68778c;
+
+            &:hover {
+                background-color: #ddd;
+            }
+
+        }
+
+    }
+
+    .top-header {
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        border-bottom: 1px dashed #cee0f0;
+        background-color: #fff;
+
+        .ivu-btn {
+            font-size: 14px;
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            color: #0394f9;
+
+            &.offset-right {
+                right: @nodeDetailPanel;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,15 @@
+/* Override Default InfoWindow Style */
+.esriPopup .sizer{
+	width: 200px;
+}
+.sizer .titlePane{
+	display: none!important;
+}
+.sizer.content .contentPane{
+	border-radius: 5px 5px 0 0;
+}
+.sizer.content .contentPane button{
+	cursor: pointer;
+	padding: 6px 22px!important;
+	margin: 3px;
+}

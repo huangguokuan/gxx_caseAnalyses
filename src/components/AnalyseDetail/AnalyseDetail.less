@@ -1,0 +1,166 @@
+@import '../../style/mixins';
+@deep: ~'>>>';
+
+.analyse-modal {
+    height: 100%;
+
+    @{deep} .ivu-modal {
+        .ivu-modal-footer {
+            display: none;
+        }
+
+        .modal-header {
+            width: 100%;
+            padding: 15px 20px;
+            position: absolute;
+            top: 35px;
+            border-bottom: 1px dashed #ccc;
+
+            .name {
+                font-size: 16px;
+                color: #000;
+                .inline-block;
+            }
+
+            .ivu-select {
+                width: 100px;
+            }
+
+            .ivu-date-picker {
+                width: 190px;
+
+                @{deep} input {
+                    font-size: 12px;
+                }
+
+            }
+
+            label,
+            .ivu-btn {
+                margin-left: 20px;
+                .inline-block;
+            }
+
+        }
+
+        .modal-body {
+            overflow: hidden;
+            height: 100%;
+            padding: 78px 10px 15px 10px;
+            font-size: 14px;
+
+            .modal-title {
+                width: 100%;
+                padding: 0 10px;
+                line-height: 40px;
+                position: absolute;
+                top: 0;
+                border-bottom: 1px solid #ccc;
+                background: #f8f8f8;
+            }
+
+            .modal-body-left {
+                float: left;
+                width: 200px;
+                height: 100%;
+                position: relative;
+                border: 1px solid #ccc;
+
+                .category-list {
+                    overflow: auto;
+                    height: 100%;
+                    padding-top: 40px;
+
+
+                    li {
+                        overflow: hidden;
+                        padding: 0 10px;
+                        line-height: 50px;
+                        border-bottom: 1px solid #ccc;
+
+                        .category {
+                            float: left;
+                            width: 50%;
+                            .text-overflow;
+                        }
+
+                        .count {
+                            float: right;
+                            width: 50%;
+                            font-weight: bold;
+                            text-align: right;
+                            color: #e95247;
+                            .text-overflow;
+
+                            i {
+                                margin-right: 5px;
+                                font-size: 20px;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .modal-body-right {
+                height: 100%;
+                margin-left: 210px;
+                position: relative;
+                border: 1px solid #ccc;
+
+                .analyse-table {
+                    overflow: auto;
+                    height: 100%;
+                    padding-top: 40px;
+
+
+                    .analyse-record {
+                        width: 100%;
+                        line-height: 40px;
+                        white-space: nowrap;
+                        letter-spacing: -3px;
+                        border-bottom: 1px solid #ccc;
+
+                        .date {
+                            box-sizing: border-box;
+                            padding: 0 10px;
+                            .inline-block;
+                        }
+
+                        .detail {
+                            padding: 0 10px;
+                            white-space: nowrap;
+                            border-left: 1px solid #ccc;
+                            .inline-block;
+
+                            span:nth-child(even) {
+                                margin-right: 20px;
+                                color: #3e81d2;
+                            }
+
+                        }
+
+                        &:nth-child(even) {
+                            background: #fbfbfb;
+
+                            .date,
+                            .detail {
+                                background: #fbfbfb;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

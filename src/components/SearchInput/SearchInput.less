@@ -1,0 +1,133 @@
+@import '../../style/mixins';
+@deep: ~'>>>';
+
+.cmp-search-input {
+    position: relative;
+
+    .placeholder {
+        font-size: 14px;
+        position: absolute;
+        z-index: 9;
+        top: 6px;
+        left: 10px;
+        cursor: text;
+        pointer-events: none;
+        color: #a5b3c7;
+    }
+
+    &.large-input {
+        @{deep} .ivu-input {
+            background-color: #f5f9ff;
+        }
+
+        @{deep} .ivu-input-group-append {
+            .ivu-btn {
+                font-size: 16px;
+            }
+
+        }
+
+        @{deep} .ivu-input {
+            height: 50px;
+        }
+
+        @{deep} .ivu-input-icon {
+            height: 50px;
+            font-size: 20px;
+            line-height: 50px;
+            color: #a583c7;
+        }
+
+        .placeholder {
+            top: 15px;
+        }
+
+    }
+
+    &.no-icon {
+        @{deep} .ivu-input-group-append {
+            width: 36px;
+            height: 30px;
+            line-height: 35px;
+            position: absolute;
+            z-index: 9;
+            right: 0;
+            background-color: transparent;
+        }
+
+        @{deep} .ivu-icon {
+            display: none !important;
+        }
+
+    }
+
+    &.has-button {
+        @{deep} .ivu-input-icon {
+            right: 70px;
+        }
+
+        @{deep} .ivu-input-group-append {
+            width: 70px;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+
+            .ivu-btn {
+                // background-color: inherit !important;
+                width: 100%;
+                height: 46px;
+                border-radius: 0 4px 4px 0;
+            }
+
+        }
+
+    }
+
+    &.is-ie9 {
+        @{deep} .ivu-input-group-append {
+            .ivu-btn {
+                .vertical-gradient(#059cfc, #106ede);
+            }
+
+        }
+
+    }
+
+    .ivu-input-wrapper {
+        position: relative;
+        transition: all .6s ease;
+
+        @{deep} .ivu-input {
+            border-radius: 4px;
+        }
+
+        @{deep} .ivu-input-group-append {
+            padding: 0;
+            transition: opacity 0.3s;
+            opacity: 1;
+            border: none;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+        }
+
+        @{deep} .ivu-input {
+        }
+
+        @{deep} .ivu-input-icon {
+            display: block !important;
+            margin-right: 5px;
+            line-height: 30px;
+            cursor: pointer;
+
+            &.ivu-icon-load-c {
+                display: none !important;
+            }
+
+        }
+
+    }
+
+}

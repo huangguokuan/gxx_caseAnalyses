@@ -1,0 +1,218 @@
+@import '../../style/mixins';
+@css-prefix:~'ivu-';
+@tabs-prefix-cls: ~"ivu-tabs";
+@border-color-base: #cee0f0;
+@title-color: #68778c;
+@tabs-height: 35px;
+@vertical-tabs-width:30px;
+.@{tabs-prefix-cls} {
+    &-wrapper{
+        overflow: hidden;
+        height: 100%;
+    }
+    &-container-normal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            background: #f7faff;
+            .vertical-gradient(#ffffff, #eff6ff);
+            border-bottom: 1px solid @border-color-base;
+            height: @tabs-height;
+            .@{tabs-prefix-cls}-list {
+                overflow: hidden;
+                li {
+                    position: relative;
+                    cursor: pointer;
+                    float: left;
+                    text-align: center;
+                    padding: 0 20px;
+                    line-height: @tabs-height;
+                    color: @title-color;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                    &.active {
+                        color: #0394f9;
+                        background: #fff;
+                        border-right: 1px solid @border-color-base;
+                        border-left: 1px solid @border-color-base;
+                    }
+                    &:hover {
+                        color: #0394f9;
+                    }
+                    .triangle {
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        width: 100%;
+                        height: 10px;
+                        background-color: #eee;
+                        background: url("../../images/base/down-triangle.png") center no-repeat;
+                    }
+                }
+
+            }
+        }
+        &-container-closable {
+            overflow: hidden;
+            position: relative;
+            background: #f7faff;
+            border-bottom: 1px solid @border-color-base;
+            height: @tabs-height;
+            &>.@{css-prefix}icon-chevron-left,&>.@{css-prefix}icon-chevron-right{
+                background: #f7faff;
+                position: absolute;
+                z-index: 1;
+                height: @tabs-height;
+                line-height: @tabs-height;
+                cursor: pointer;
+            }
+            &>.@{css-prefix}icon-chevron-left{
+                left:0;
+            }
+            &>.@{css-prefix}icon-chevron-right{
+                right: 0;
+            }
+            .@{tabs-prefix-cls}-list {
+                transition:all ease .3s;
+                position: relative;
+                float: left;
+                overflow: hidden;
+                white-space: nowrap;
+                padding: 0 3px;
+                li {
+                    height: @tabs-height;
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    text-align: center;
+                    padding: 0 14px;
+                    margin: 0 3px;
+                    font-size: 14px;
+                    line-height:@tabs-height;
+                    &.active,
+                    &:hover {
+                        color: #0394f9;
+                        font-weight: bold;
+                        .@{css-prefix}icon-close {
+                            color: #0394f9;
+                        }
+                    }
+                    &.active {
+                        border-bottom: 3px solid #109af9;
+                    }
+                    .@{css-prefix}icon-close {
+                        cursor: pointer;
+                        color: #a5b3c7;
+                        font-size: 10px;
+                        transform: scale(0.8);
+                        -webkit-transform: scale(0.8);
+                        -webkit-text-size-adjust: none;
+                        margin-left: 3px;
+                    }
+                }
+            }
+        }
+        &-container-vertical{
+            float: left;
+            width: @vertical-tabs-width;
+            height: 100%;
+            overflow: auto;
+            .@{tabs-prefix-cls}-list {
+                li{
+                    padding: 5px;
+                    text-align: center;
+                    word-break: break-all;
+                    position: relative;
+                    cursor: pointer;
+                    &.active{
+                        color: #0394F9;
+                        &:after{
+                            content: '';
+                            width: 2px;
+                            height: 100%;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            z-index: 1;
+                            background-color: #0394F9;
+                        }
+                    }
+                }
+            }
+        }
+    &-content {
+        height: 100%;
+        padding-top: @tabs-height;
+        &-vertical{
+            height: 100%;
+            margin-left: @vertical-tabs-width;
+            padding: 10px;
+        }
+    }
+
+}
+
+/* @import '../../style/mixins';
+@tabMenuHeight: 35px;
+
+.tabs-menu-wrapper {
+    .tabs-menu {
+        width: 100%;
+        height: @tabMenuHeight;
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        right: 0;
+        border-bottom: 1px solid #cee0f0;
+        .vertical-gradient(#ffffff, #eff6ff);
+
+        .nav-tabs {
+            overflow: hidden;
+
+            li {
+                float: left;
+                box-sizing: border-box;
+                padding: 0 20px;
+                font-size: 14px;
+                line-height: @tabMenuHeight;
+                position: relative;
+                cursor: pointer;
+                text-align: center;
+                color: #68778c;
+
+                &.active {
+                    font-weight: bold;
+                    color: #0394f9;
+                    background-color: #fff;
+                    border-right: 1px solid #cee0f0;
+                    border-left: 1px solid #cee0f0;
+                }
+
+                &:hover {
+                    color: #0394f9;
+                }
+
+                .triangle {
+                    width: 100%;
+                    height: 10px;
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    background: #fff url("../../images/tab/down-triangle.png") center no-repeat;
+                }
+
+            }
+
+        }
+
+    }
+
+    .content {
+        height: 100%;
+        padding: @tabMenuHeight+10 10px 10px 10px;
+    }
+
+}
+ */

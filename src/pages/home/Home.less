@@ -1,0 +1,101 @@
+@import '../../style/mixins';
+@menuHeight: 50px;
+@menuSideWidth: 190px;
+
+#home {
+    height: 100%;
+    position: relative;
+    background: #eee;
+
+    .ivu-menu {
+        width: 100%;
+        height: @menuHeight;
+        line-height: @menuHeight;
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        color: #fff;
+        .horizontal-gradient(#009bfd, #1574e7);
+
+        img {
+            margin: -5px 5px 0 0;
+            vertical-align: middle;
+        }
+
+        .layout-logo {
+            width: @menuSideWidth+60px;
+            height: 100%;
+            font-size: 22px;
+            position: absolute;
+            text-align: center;
+            color: #fff;
+        }
+
+        .layout-nav {
+            overflow: hidden;
+            width: 100%;
+            padding-left: @menuSideWidth+80px;
+
+            .ivu-menu-item {
+                padding: 0;
+                font-size: 16px;
+
+                &.ivu-menu-item-selected,
+                &.ivu-menu-item-active,
+                &:hover {
+                    background: url('../../images/nav/nav-highlight.png');
+                }
+
+                span {
+                    padding: 0 15px 0 50px;
+                    background-repeat: no-repeat;
+                    background-position: 15px center;
+                }
+
+            }
+
+        }
+
+        .layout-admin {
+            width: 150px;
+            height: 100%;
+            padding: 0 8px;
+            font-size: 14px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            .text-overflow;
+        }
+
+    }
+
+    .layout-content {
+        overflow: hidden;
+        box-sizing: border-box;
+        height: 100%;
+        min-height: 200px;
+        padding: @menuHeight 0 30px 0;
+        background: #f5f7f9;
+
+        .layout-content-main {
+            height: 100%;
+        }
+
+    }
+
+    .layout-copy {
+        width: 100%;
+        padding: 5px 0 6px;
+        position: absolute;
+        z-index: 9;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        color: #68778c;
+        border-top: 1px solid #cee0f0;
+        background: #f7faff;
+    }
+
+}

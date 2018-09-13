@@ -1,0 +1,34 @@
+{
+    "presets": [
+        ["env",
+        {
+            "useBuiltIns": "entry",
+            "modules": false,
+            "targets":
+            {
+                "browsers": ["last 3 versions", "not ie <= 8"]
+            }
+        }],
+        "stage-2"
+    ],
+    "plugins": ["transform-vue-jsx", ["import",
+        {
+            "libraryName": "iview",
+            "libraryDirectory": "src/components"
+        }],
+        ["transform-runtime",
+        {
+            "helpers": false,
+            "polyfill": true,
+            "regenerator": true
+        }]
+    ],
+    "env":
+    {
+        "test":
+        {
+            "presets": ["env", "stage-2"],
+            "plugins": ["transform-vue-jsx", "istanbul"]
+        }
+    }
+}
